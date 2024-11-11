@@ -2,11 +2,11 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
-    <StartProgram>C:\eticadata software\ERP v22\Desktop\ERPv22.e.exe</StartProgram>
+    <StartProgram>..\..\Desktop\ERPv22.e.exe</StartProgram>
     <StartArguments>
     </StartArguments>
   </PropertyGroup>
   <PropertyGroup>
-    <ReferencePath>C:\eticadata Sites\ERP v22\Eticadata.Web\Bin\;C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\</ReferencePath>
+    <ReferencePath>..\Eticadata.Web\Bin\;..\..\Desktop\Bin\</ReferencePath>
   </PropertyGroup>
 </Project>
