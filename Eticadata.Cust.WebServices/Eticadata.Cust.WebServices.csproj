@@ -59,47 +59,47 @@
     <Reference Include="ERP.e.DataServices">
       <HintPath>C:\eticadata Sites\ERP v22\Eticadata.Web\Bin\ERP.e.DataServices.exe</HintPath>
     </Reference>
-    <Reference Include="Eticadata.Abstract, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Abstract, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Abstract.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.BaseCode, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.BaseCode, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.BaseCode.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Controls, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Controls.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.DomainServices, Version=18.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.DomainServices, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.DomainServices.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.ERP, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.ERP, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.ERP.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.EtiVersions, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.EtiVersions, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.EtiVersions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Generics, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Generics, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Generics.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Movs, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Movs, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Eticadata.Cust.Executable\.build\Eticadata.Movs.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Reporting, Version=19.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Reporting, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Edata.Cust\Projects\V19\ERP.Build\Web.00.Site\Eticadata.Web\bin\Eticadata.Reporting.dll</HintPath>
       <Private>False</Private>
@@ -112,28 +112,28 @@
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.RiaServices.Startup.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Tables, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Tables, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Tables.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Tables.Entities, Version=19.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3" />
-    <Reference Include="Eticadata.Views.Reports, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Tables.Entities, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3" />
+    <Reference Include="Eticadata.Views.Reports, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Views.Reports.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Views.Reports.XmlSerializers, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Views.Reports.XmlSerializers, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Views.Reports.XmlSerializers.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Web, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Web, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Web.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Web.Infrastruct, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Web.Infrastruct, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Web.Infrastruct.dll</HintPath>
       <Private>False</Private>
@@ -145,8 +145,8 @@
     <Reference Include="Microsoft.CSharp">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="OpenRiaServices.DomainServices.EntityFramework">

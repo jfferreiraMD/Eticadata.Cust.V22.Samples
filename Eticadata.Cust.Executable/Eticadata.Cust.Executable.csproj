@@ -23,7 +23,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>C:\Program Files %28x86%29\eticadata software\ERP v22\Desktop\Bin\</OutputPath>
+    <OutputPath>C:\eticadata software\ERP v22\Desktop\Bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -48,55 +48,55 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Eticadata.BaseCode">
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.BaseCode.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.BaseCode.dll</HintPath>
     </Reference>
     <Reference Include="Eticadata.Controls">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.Controls.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.Controls.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Desktop.Base, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Desktop.Base, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.Desktop.Base.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.Desktop.Base.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Eticadata.ERP">
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.ERP.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.ERP.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.EtiVersions, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.EtiVersions, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.EtiVersions.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.EtiVersions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Generics, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Generics, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.Generics.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.Generics.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Infrastruct, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Infrastruct, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.Infrastruct.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.Infrastruct.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Movs, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Movs, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.Movs.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.Movs.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Tables, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Tables, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.Tables.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.Tables.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Views.Reports, Version=19.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
+    <Reference Include="Eticadata.Views.Reports, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Eticadata.Views.Reports.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Eticadata.Views.Reports.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:\eticadata software\ERP v22\Desktop\Bin\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -120,9 +120,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>:Copy executable, assembly and debug symbols to desktop folder
-xcopy "$(TargetDir)Eticadata.Cust.*.pdb" "C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin" /E /Y
-xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin" /E /Y
-xcopy "$(TargetDir)Eticadata.Cust.*.exe" "C:\Program Files (x86)\eticadata software\ERP v22\Desktop\Bin" /E /Y</PostBuildEvent>
+xcopy "$(TargetDir)Eticadata.Cust.*.pdb" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y
+xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y
+xcopy "$(TargetDir)Eticadata.Cust.*.exe" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
