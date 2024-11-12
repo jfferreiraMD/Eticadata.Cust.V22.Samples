@@ -99,6 +99,7 @@
       <HintPath>..\Eticadata.Cust.Executable\.build\Eticadata.Movs.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Eticadata.Movs.Entities, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3" />
     <Reference Include="Eticadata.Reporting, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Edata.Cust\Projects\V19\ERP.Build\Web.00.Site\Eticadata.Web\bin\Eticadata.Reporting.dll</HintPath>
@@ -356,20 +357,20 @@
   </Target>  -->
   <PropertyGroup>
     <PostBuildEvent>:Copy assembly to application webserver folder
-xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata Sites\ERP v19\Eticadata.Web\Bin" /E /Y
-xcopy "$(TargetDir)Eticadata.Cust.*.pdb" "C:\eticadata Sites\ERP v19\Eticadata.Web\Bin" /E /Y
+xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata Sites\ERP v22\Eticadata.Web\Bin" /E /Y
+xcopy "$(TargetDir)Eticadata.Cust.*.pdb" "C:\eticadata Sites\ERP v22\Eticadata.Web\Bin" /E /Y
 
 :Copy html to application webserver folder
-xcopy "$(ProjectDir)Client\*.html" "C:\eticadata Sites\ERP v19\Eticadata.Web\Client\" /E /Y
+xcopy "$(ProjectDir)Client\*.html" "C:\eticadata Sites\ERP v22\Eticadata.Web\Client\" /E /Y
 
 :Copy javascript viewmodels to application webserver folder
-xcopy "$(ProjectDir)ViewModels\*.js" "C:\eticadata Sites\ERP v19\Eticadata.Web\ViewModels" /E /Y
+xcopy "$(ProjectDir)ViewModels\*.js" "C:\eticadata Sites\ERP v22\Eticadata.Web\ViewModels" /E /Y
 
 :Copy translation file to application webserver folder
-xcopy "$(ProjectDir)Lang\LangHtml\lang.*.js" "C:\eticadata Sites\ERP v19\Eticadata.Web\Lang\LangHtml" /E /Y
+xcopy "$(ProjectDir)Lang\LangHtml\lang.*.js" "C:\eticadata Sites\ERP v22\Eticadata.Web\Lang\LangHtml" /E /Y
 
-xcopy "$(ProjectDir)Themes\*.*" "C:\eticadata Sites\ERP v19\Eticadata.Web\Themes" /E /Y
-xcopy "$(ProjectDir)Scripts\*.*" "C:\eticadata Sites\ERP v19\Eticadata.Web\Scripts" /E /Y
+xcopy "$(ProjectDir)Themes\*.*" "C:\eticadata Sites\ERP v22\Eticadata.Web\Themes" /E /Y
+xcopy "$(ProjectDir)Scripts\*.*" "C:\eticadata Sites\ERP v22\Eticadata.Web\Scripts" /E /Y
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -473,16 +473,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-			:Copy assembly and debug symbols to desktop folder
-			xcopy "$(TargetDir)Eticadata.Cust.*.pdb" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y
-			xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y
+    <PostBuildEvent>:Copy assembly and debug symbols to desktop folder
+xcopy "$(TargetDir)Eticadata.Cust.*.pdb" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y
+xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y
 
-			:Copy assembly for desktop client update
-			xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata Sites\ERP v22\Eticadata.Web\Update\Staging\Bin" /E /Y
+:Copy assembly for desktop client update
+xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata Sites\ERP v22\Eticadata.Web\Update\Staging\Bin" /E /Y
 
-			:Copy assembly to application webserver folder
-			xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata Sites\ERP v22\Eticadata.Web\Bin" /E /Y
+:Copy assembly to application webserver folder
+xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata Sites\ERP v22\Eticadata.Web\Bin" /E /Y
 		</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
