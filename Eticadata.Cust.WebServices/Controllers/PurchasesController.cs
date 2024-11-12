@@ -47,8 +47,8 @@ namespace Eticadata.Cust.WebServices.Controllers
         {
             byte[] reportBytes;
 
-            MovCompra purch;
-            MovCompraLin purchLine;
+            MovCompra movCompra;
+            MovCompraLin movCompraLin;
             var byRefFalse = false;
             var stockAvailable = true;
             var affectsOtherLines = true;
@@ -61,32 +61,32 @@ namespace Eticadata.Cust.WebServices.Controllers
 
             try
             {
-                purch = Eti.Aplicacao.Movimentos.MovCompras.GetNew(document.DocTypeAbbrev, document.SectionCode);
-                purch.Cabecalho().CodExercicio = document.FiscalYear;
+                movCompra = Eti.Aplicacao.Movimentos.MovCompras.GetNew(document.DocTypeAbbrev, document.SectionCode);
+                movCompra.Cabecalho.CodExercicio = document.FiscalYear;
 
-                purch.Cabecalho().AplicacaoOrigem = "WS";
+                movCompra.Cabecalho.AplicacaoOrigem = "WS";
 
-                purch.Cabecalho().Data = document.Date.Date;
-                purch.Cabecalho().DataVencimento = document.ExpirationDate;
+                movCompra.Cabecalho.Data = document.Date.Date;
+                movCompra.Cabecalho.DataVencimento = document.ExpirationDate;
 
-                purch.Cabecalho().CodEntidade = document.EntityCode;
-                purch.AlteraEntidade(TpEntidade.Fornecedor, purch.Cabecalho().CodEntidade, true, true);
+                movCompra.Cabecalho.CodEntidade = document.EntityCode;
+                movCompra.AlteraEntidade(TpEntidade.Fornecedor, movCompra.Cabecalho.CodEntidade, true, true);
 
-                purch.Cabecalho().AbrevMoeda = document.CurrencyCode;
-                purch.AlteraMoeda(document.CurrencyCode, ref byRefFalse, false);
+                movCompra.Cabecalho.AbrevMoeda = document.CurrencyCode;
+                movCompra.AlteraMoeda(document.CurrencyCode, ref byRefFalse, false);
 
                 foreach (PurchaseLine line in document.Lines.OrderBy(p => p.LineNumber))
                 {
                     itemCode = line.ItemCode;
 
-                    numberLine = purch.Lines.Count + 1;
-                    purch.AddLin(ref numberLine);
-                    purchLine = purch.Lines[numberLine];
-                    purchLine.TipoLinha = TpLinha.Artigo;
+                    numberLine = movCompra.Lines.Count + 1;
+                    movCompra.AddLin(ref numberLine);
+                    movCompraLin = movCompra.Lines[numberLine];
+                    movCompraLin.TipoLinha = TpLinha.Artigo;
 
-                    purchLine.CodArtigo = itemCode;
-                    purch.AlteraArtigo(numberLine, ref itemCode, ref affectsOtherLines, ref fixedAssociation, ref freeAssociation, ref searchItem, checkStock, ref stockAvailable);
-                    purchLine.DescArtigo = line.ItemDescription;
+                    movCompraLin.CodArtigo = itemCode;
+                    movCompra.AlteraArtigo(numberLine, ref itemCode, ref affectsOtherLines, ref fixedAssociation, ref freeAssociation, ref searchItem, checkStock, ref stockAvailable);
+                    movCompraLin.DescArtigo = line.ItemDescription;
 
                     //Cria lote caso não exista
                     var item = Eti.Aplicacao.Tabelas.Artigos.Find(itemCode);
@@ -101,7 +101,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                         {                            
                             Eti.Aplicacao.Tabelas.Artigos.GravaLote(itemCode, line.BatchCode, line.BatchDescription, line.EntryDate , line.ExpirationDate, "", "", "", "", "");
 
-                            purchLine.Lote = line.BatchCode;
+                            movCompraLin.Lote = line.BatchCode;
 
                             checkStock = true;
                             stockAvailable = false;
@@ -109,54 +109,53 @@ namespace Eticadata.Cust.WebServices.Controllers
                             //exists : devolve se o lote existe ou não
                             //inactive: devolve se está inativo
                             //se checkStock = true devolve no stockAvailable se existe stock disponivel
-                            purch.AlteraLote(numberLine, itemCode, line.BatchCode, ref exists, ref inactive, checkStock, ref stockAvailable);
+                            movCompra.AlteraLote(numberLine, itemCode, line.BatchCode, ref exists, ref inactive, checkStock, ref stockAvailable);
                         }
                     }
 
 
-                    purchLine.Quantidade = line.Quantity;
-                    purch.AlteraQuantidade(numberLine, purchLine.Quantidade, ref affectsOtherLines, false, ref stockAvailable);
+                    movCompraLin.Quantidade = line.Quantity;
+                    movCompra.AlteraQuantidade(numberLine, movCompraLin.Quantidade, ref affectsOtherLines, false, ref stockAvailable);
 
-                    purchLine.PrecoUnitario = Convert.ToDouble(line.UnitPriceExcludedVAT);
-                    purch.AlteraPrecoUnitario(numberLine, purchLine.PrecoUnitario);
+                    movCompraLin.PrecoUnitario = Convert.ToDouble(line.UnitPriceExcludedVAT);
+                    movCompra.AlteraPrecoUnitario(numberLine, movCompraLin.PrecoUnitario);
 
-                    purchLine.TaxaIva = Convert.ToDouble(line.VATTax);
-                    purchLine.CodTaxaIva = Eti.Aplicacao.Tabelas.TaxasIvas.GetTaxaIva(Convert.ToDecimal(purchLine.TaxaIva));
-                    purch.AlteraTaxaIVA(numberLine, purchLine.CodTaxaIva);
+                    movCompraLin.TaxaIva = Convert.ToDouble(line.VATTax);
+                    movCompraLin.CodTaxaIva = Eti.Aplicacao.Tabelas.TaxasIvas.GetTaxaIva(movCompraLin.TaxaIva);
+                    movCompra.AlteraTaxaIVA(numberLine, movCompraLin.CodTaxaIva);
 
-                    purchLine.Desconto1 = line.Discount1;
-                    purch.AlteraDesconto(1, numberLine, purchLine.Desconto1);
+                    movCompraLin.Desconto1 = line.Discount1;
+                    movCompra.AlteraDesconto(DiscountTypes.Discount1, numberLine, movCompraLin.Desconto1);
 
-                    purchLine.Desconto2 = line.Discount2;
-                    purch.AlteraDesconto(2, numberLine, purchLine.Desconto2);
+                    movCompraLin.Desconto2 = line.Discount2;
+                    movCompra.AlteraDesconto(DiscountTypes.Discount2, numberLine, movCompraLin.Desconto2);
 
-                    purchLine.Desconto3 = line.Discount3;
-                    purch.AlteraDesconto(3, numberLine, purchLine.Desconto3);
+                    movCompraLin.Desconto3 = line.Discount3;
+                    movCompra.AlteraDesconto(DiscountTypes.Discount3, numberLine, movCompraLin.Desconto3);
 
-                    purchLine.DescontoValorLinha = line.DiscountValue;
-                    purch.AlteraDesconto(4, numberLine, purchLine.DescontoValorLinha);
+                    movCompraLin.DescontoValorLinha = line.DiscountValue;
+                    movCompra.AlteraDesconto(DiscountTypes.DiscountValue, numberLine, movCompraLin.DescontoValorLinha);
                 }
 
-                var validate = purch.Validate(true);
+                var validate = movCompra.Validate(true);
                 if (validate)
                 {
                     var blockingStock = false;
-                    Eti.Aplicacao.Movimentos.MovCompras.Update(ref purch, ref blockingStock, true, 0, "");
+                    Eti.Aplicacao.Movimentos.MovCompras.Update(ref movCompra, ref blockingStock, true, 0, "");
                 }
 
-                if (!string.IsNullOrEmpty(purch.EtiErrorCode))
+                if (!string.IsNullOrEmpty(movCompra.EtiErrorCode))
                 {
-                    throw new Exception($@"ErrorCode:{purch.EtiErrorCode}{Environment.NewLine}
-                                            EtiErrorDescription:{purch.EtiErrorDescription}");
+                    throw new Exception($@"ErrorCode:{movCompra.EtiErrorCode}{Environment.NewLine} EtiErrorDescription:{movCompra.EtiErrorDescription}");
                 }
                 else
                 {
                     DocumentKey docKey = new Helpers.DocumentKey()
                     {
-                        SectionCode = purch.Cabecalho().CodSeccao,
-                        DocTypeAbbrev = purch.Cabecalho().AbrevTpDoc,
-                        FiscalYear = purch.Cabecalho().CodExercicio,
-                        Number = purch.Cabecalho().Numero
+                        SectionCode = movCompra.Cabecalho.CodSeccao,
+                        DocTypeAbbrev = movCompra.Cabecalho.AbrevTpDoc,
+                        FiscalYear = movCompra.Cabecalho.CodExercicio,
+                        Number = movCompra.Cabecalho.Numero
                     };
 
                     reportBytes = Functions.GetReportBytes(TpDocumentoAEmitir.Compras, docKey);

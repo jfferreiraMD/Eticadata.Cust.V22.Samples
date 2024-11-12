@@ -10,10 +10,7 @@ namespace Eticadata.Cust.WebServices.Helpers
     {
         public static byte[] GetReportBytes(EtiAplicacao EtiApp, TpDocumentoAEmitir typeDocToPrint, DocumentKey docKey)
         {
-            byte[] reportBytes = null;
-            byte[] emailBytes = null;
-            bool isCFDoc;
-
+            byte[] reportBytes;
             try
             {
                 var inputParameters = new ElectronicSignature.ReportParameters()
@@ -26,7 +23,7 @@ namespace Eticadata.Cust.WebServices.Helpers
                     ToPrinter = false
                 };
 
-                Eticadata.Reporting.ReportProvider.EmitDocumentAndSendEmail(ref inputParameters, out reportBytes, ref emailBytes, out isCFDoc, EtiApp);
+                Eticadata.Reporting.ReportProvider.EmitDocumentAndSendEmail(ref inputParameters, out reportBytes, out byte[] emailBytes, EtiApp);
 
             }
             catch (Exception ex)
@@ -39,7 +36,7 @@ namespace Eticadata.Cust.WebServices.Helpers
 
         public static byte[] GetReportBytes(TpDocumentoAEmitir typeDocToPrint, DocumentKey docKey)
         {
-            byte[] reportBytes = null;
+            byte[] reportBytes;
 
             try
             {

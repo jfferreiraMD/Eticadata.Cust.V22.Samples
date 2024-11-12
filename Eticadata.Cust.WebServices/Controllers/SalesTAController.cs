@@ -55,7 +55,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                     itemCode = line.ItemCode;
 
                     numberLine = mySale.Lines.Count + 1;
-                    mySale.AddLin(ref numberLine);
+                    mySale.AddLin(numberLine);
                     saleLine = mySale.Lines[numberLine];
                     saleLine.TipoLinha = TpLinha.Artigo;
 
@@ -75,20 +75,20 @@ namespace Eticadata.Cust.WebServices.Controllers
                     mySale.AlteraPrecoUnitario(numberLine, saleLine.PrecoUnitario, ref byRefFalse);
 
                     saleLine.TaxaIva = Convert.ToDouble(line.VATTax);
-                    saleLine.CodTaxaIva = Eti.Aplicacao.Tabelas.TaxasIvas.GetTaxaIva(Convert.ToDecimal(saleLine.TaxaIva));
+                    saleLine.CodTaxaIva = Eti.Aplicacao.Tabelas.TaxasIvas.GetTaxaIva(saleLine.TaxaIva);
                     mySale.AlteraTaxaIVA(numberLine, saleLine.CodTaxaIva);
 
                     saleLine.Desconto1 = line.Discount1;
-                    mySale.AlteraDesconto(1, numberLine, saleLine.Desconto1);
+                    mySale.AlteraDesconto(DiscountTypes.Discount1, numberLine, saleLine.Desconto1);
 
                     saleLine.Desconto2 = line.Discount2;
-                    mySale.AlteraDesconto(2, numberLine, saleLine.Desconto2);
+                    mySale.AlteraDesconto(DiscountTypes.Discount2, numberLine, saleLine.Desconto2);
 
                     saleLine.Desconto3 = line.Discount3;
-                    mySale.AlteraDesconto(3, numberLine, saleLine.Desconto3);
+                    mySale.AlteraDesconto(DiscountTypes.Discount3, numberLine, saleLine.Desconto3);
 
                     saleLine.DescontoValorLinha = line.DiscountValue;
-                    mySale.AlteraDesconto(4, numberLine, saleLine.DescontoValorLinha);
+                    mySale.AlteraDesconto(DiscountTypes.DiscountValue, numberLine, saleLine.DescontoValorLinha);
                 }
 
 
@@ -101,7 +101,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                 {
                     var movType = line.PayMovTypeCodeTres;                    
                     mySale.LinesPag[linePayMovType].AbrevTpMovPagTes = movType;
-                    mySale.AlteraPagamAbrevTpMov(linePayMovType, movType, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse);
+                    mySale.AlteraPagamAbrevTpMov(linePayMovType, movType, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse, ref byRefFalse);
                     mySale.LinesPag[linePayMovType].Cambio = line.Exchange;
                     mySale.LinesPag[linePayMovType].Valor = line.Value;
                     mySale.AlteraPagamValor(linePayMovType, mySale.LinesPag[linePayMovType].Valor);

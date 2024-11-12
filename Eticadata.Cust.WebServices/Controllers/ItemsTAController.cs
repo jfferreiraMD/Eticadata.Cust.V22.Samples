@@ -80,7 +80,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                 {
                     item.set_PrecoNumLin(l.Number, l.SalePrice);
                     item.set_MoedaNumLin(l.Number, l.Currency);
-                    item.set_IvaNumLin(l.Number, l.VATIncluded);
+                    item.set_IvaNumLin(l.Number, l.IvaValue);
                 });
 
                 if (item.Validate())

@@ -57,7 +57,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                     itemCode = line.CodArtigo;
 
                     numberLine = mySale.Lines.Count + 1;
-                    mySale.AddLin(ref numberLine);
+                    mySale.AddLin(numberLine);
                     saleLine = mySale.Lines[numberLine];
                     saleLine.TipoLinha = TpLinha.Artigo;
 

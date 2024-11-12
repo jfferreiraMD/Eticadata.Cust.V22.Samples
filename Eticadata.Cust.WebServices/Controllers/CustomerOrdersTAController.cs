@@ -112,20 +112,20 @@ namespace Eticadata.Cust.WebServices.Controllers
                     myOrder.AlteraPrecoUnitario(numberLine, myOrderLine.PrecoUnitario, ref byRefFalse);
 
                     myOrderLine.TaxaIva = Convert.ToDouble(line.VATTax);
-                    myOrderLine.CodTaxaIva = Eti.Aplicacao.Tabelas.TaxasIvas.GetTaxaIva(Convert.ToDecimal(myOrderLine.TaxaIva));
+                    myOrderLine.CodTaxaIva = Eti.Aplicacao.Tabelas.TaxasIvas.GetTaxaIva(myOrderLine.TaxaIva);
                     myOrder.AlteraTaxaIVA(numberLine, myOrderLine.CodTaxaIva);
 
                     myOrderLine.Desconto1 = line.Discount1;
-                    myOrder.AlteraDesconto(1, numberLine, myOrderLine.Desconto1);
+                    myOrder.AlteraDesconto(DiscountTypes.Discount1, numberLine, myOrderLine.Desconto1);
 
                     myOrderLine.Desconto2 = line.Discount2;
-                    myOrder.AlteraDesconto(2, numberLine, myOrderLine.Desconto2);
+                    myOrder.AlteraDesconto(DiscountTypes.Discount2, numberLine, myOrderLine.Desconto2);
 
                     myOrderLine.Desconto3 = line.Discount3;
-                    myOrder.AlteraDesconto(3, numberLine, myOrderLine.Desconto3);
+                    myOrder.AlteraDesconto(DiscountTypes.Discount3, numberLine, myOrderLine.Desconto3);
 
                     myOrderLine.DescontoValorLinha = line.DiscountValue;
-                    myOrder.AlteraDesconto(4, numberLine, myOrderLine.DescontoValorLinha);
+                    myOrder.AlteraDesconto(DiscountTypes.DiscountValue, numberLine, myOrderLine.DescontoValorLinha);
                 }
 
                 var validate = myOrder.Validate(true);

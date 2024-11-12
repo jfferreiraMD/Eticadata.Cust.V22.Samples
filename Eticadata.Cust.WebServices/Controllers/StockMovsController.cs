@@ -42,7 +42,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                 int NcdCustosUnit = app.MoedaBase.NcdCustosUnit;
                 app.Movimentos.MovRecalculo.GetValoresAmbiente(ref DtmFecho, ref NcdTotais, ref NcdCustosUnit);
                 //Inicializações correspondem opções da janela 
-                app.Movimentos.MovRecalculo.RecalculaStocksInic(closeDate, DtmFecho, false, false, processUntil, until, true, "", "");
+                app.Movimentos.MovRecalculo.RecalculaStocksInic(closeDate, DtmFecho, false, false, processUntil, until, true, false, "", "");
                 //Executar o recalculo
                 bool Result = app.Movimentos.MovRecalculo.RecalculaStocks();
 

@@ -19,7 +19,6 @@ namespace Eticadata.Cust.WebServices.Controllers
             MovOrdemReparacao myRepairOrder;
             MovOrdemReparacaoLin newLine;
             List<string> lstMsg = new List<string>();
-            int searchItem = 0;
 
             var errorDescription = "";
             var result = new DocumentResult();
@@ -40,13 +39,15 @@ namespace Eticadata.Cust.WebServices.Controllers
 
                 myRepairOrder.AlteraViatura(pRepairOrder.Vehicle, false);
 
+                TpProcuraArtigo pProcuraArtigo = TpProcuraArtigo.Encontrou;
+
                 //inserir linhas de materiais
                 foreach (MaterialsLine lineMaterial in pRepairOrder.LinesMaterials.OrderBy(p => p.LineNumber))
                 {
                     newLine = myRepairOrder.NovaLinha(TpLinhaOficinas.Materiais, true);
 
                     newLine.CodArtigo = lineMaterial.ItemCode;
-                    myRepairOrder.SetInfoArtigo(newLine, TpLinhaOficinas.Materiais, ref searchItem);
+                    myRepairOrder.SetInfoArtigo(newLine, TpLinhaOficinas.Materiais, ref pProcuraArtigo);
                     newLine.DescArtigo = lineMaterial.ItemDescription;
 
 
@@ -67,7 +68,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                     newLine = myRepairOrder.NovaLinha(TpLinhaOficinas.ServInternos, true);
 
                     newLine.CodArtigo = lineInternalService.ItemCode;
-                    myRepairOrder.SetInfoArtigo(newLine, TpLinhaOficinas.ServInternos, ref searchItem);
+                    myRepairOrder.SetInfoArtigo(newLine, TpLinhaOficinas.ServInternos, ref pProcuraArtigo);
                     newLine.DescArtigo = lineInternalService.ItemDescription;
 
                     if (myRepairOrder.Cabecalho.IvaIncluido)
@@ -87,7 +88,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                     newLine = myRepairOrder.NovaLinha(TpLinhaOficinas.ServExternos, true);
 
                     newLine.CodArtigo = lineExternalService.ItemCode;
-                    myRepairOrder.SetInfoArtigo(newLine, TpLinhaOficinas.ServExternos, ref searchItem);
+                    myRepairOrder.SetInfoArtigo(newLine, TpLinhaOficinas.ServExternos, ref pProcuraArtigo);
                     newLine.DescArtigo = lineExternalService.ItemDescription;
 
                     if (myRepairOrder.Cabecalho.IvaIncluido)

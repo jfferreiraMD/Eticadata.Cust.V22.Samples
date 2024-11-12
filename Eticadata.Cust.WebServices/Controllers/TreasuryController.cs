@@ -64,18 +64,18 @@ namespace Eticadata.Cust.WebServices.Controllers
                     Eticadata.ERP.ListaElem lstElem;
 
                     lstElem = lst.NewElem();
-                    lstElem.Add("strcodseccaomov", sectionCode);
-                    lstElem.Add("lngnummov", realTransactions.ValueGet<int>("intnumero").ToString());
-                    lstElem.Add("lngtalaonum", receipt.Numero.ToString());
-                    lstElem.Add("valor", realTransactions.ValueGet<double>("fltvalor").ToString());
-                    lstElem.Add("strrubricamov", "");
-                    lstElem.Add("strdescricao", "");
-                    lstElem.Add("strdocumento", "Cheque Caixa (EUR)");
-                    lstElem.Add("strbanco", "");
-                    lstElem.Add("tpentidade", "0");
-                    lstElem.Add("lngcodentidade", "0");
-                    lstElem.Add("strentidadectbanc", "");
-                    lstElem.Add("strmyupdatestamp", Eticadata.ERP.UpdateStamp.ConvertBytesToLong(realTransactions.ValueGet<byte[]>("myupdatestamp")).ToString());
+                    lstElem.Add<string>("strcodseccaomov", sectionCode);
+                    lstElem.Add<long>("lngnummov", realTransactions.ValueGet<int>("intnumero"));
+                    lstElem.Add<long>("lngtalaonum", receipt.Numero);
+                    lstElem.Add<double>("valor", realTransactions.ValueGet<double>("fltvalor"));
+                    lstElem.Add<string>("strrubricamov", "");
+                    lstElem.Add<string>("strdescricao", "");
+                    lstElem.Add<string>("strdocumento", "Cheque Caixa (EUR)");
+                    lstElem.Add<string>("strbanco", "");
+                    lstElem.Add<int>("tpentidade", 0);
+                    lstElem.Add<long>("lngcodentidade", 0);
+                    lstElem.Add<string>("strentidadectbanc", "");
+                    lstElem.Add<long>("strmyupdatestamp", Eticadata.ERP.UpdateStamp.ConvertBytesToLong(realTransactions.ValueGet<byte[]>("myupdatestamp")));
                     lst.AddBefore(lstElem, 1);
 
 
@@ -102,7 +102,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                     }
                     else
                     {
-                        //'Discriminando os Valores/Cheques
+                        //Discriminando os Valores/Cheques
                         transactionNumbersGenerate += NumMovPiscados;
                         if (receipt.Numerario > 0)
                         {

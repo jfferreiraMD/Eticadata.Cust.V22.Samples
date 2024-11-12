@@ -79,7 +79,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                     itemCode = line.ItemCode;
 
                     numberLine = sale.Lines.Count + 1;
-                    sale.AddLin(ref numberLine);
+                    sale.AddLin(numberLine);
                     saleLine = sale.Lines[numberLine];
                     saleLine.TipoLinha = TpLinha.Artigo;
 
@@ -94,20 +94,20 @@ namespace Eticadata.Cust.WebServices.Controllers
                     sale.AlteraPrecoUnitario(numberLine, saleLine.PrecoUnitario, ref byRefFalse);
 
                     saleLine.TaxaIva = Convert.ToDouble(line.VATTax);
-                    saleLine.CodTaxaIva = Eti.Aplicacao.Tabelas.TaxasIvas.GetTaxaIva(Convert.ToDecimal(saleLine.TaxaIva));
+                    saleLine.CodTaxaIva = Eti.Aplicacao.Tabelas.TaxasIvas.GetTaxaIva(saleLine.TaxaIva);
                     sale.AlteraTaxaIVA(numberLine, saleLine.CodTaxaIva);
 
                     saleLine.Desconto1 = line.Discount1;
-                    sale.AlteraDesconto(1, numberLine, saleLine.Desconto1);
+                    sale.AlteraDesconto(DiscountTypes.Discount1, numberLine, saleLine.Desconto1);
 
                     saleLine.Desconto2 = line.Discount2;
-                    sale.AlteraDesconto(2, numberLine, saleLine.Desconto2);
+                    sale.AlteraDesconto(DiscountTypes.Discount2, numberLine, saleLine.Desconto2);
 
                     saleLine.Desconto3 = line.Discount3;
-                    sale.AlteraDesconto(3, numberLine, saleLine.Desconto3);
+                    sale.AlteraDesconto(DiscountTypes.Discount3, numberLine, saleLine.Desconto3);
 
                     saleLine.DescontoValorLinha = line.DiscountValue;
-                    sale.AlteraDesconto(4, numberLine, saleLine.DescontoValorLinha);
+                    sale.AlteraDesconto(DiscountTypes.DiscountValue, numberLine, saleLine.DescontoValorLinha);
                 }
 
                 var validate = sale.Validate(true);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Eticadata.ERP.EtiEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -113,7 +114,7 @@ namespace Eticadata.Cust.WebServices.Controllers
             for (var i = 0; i < factors.Count; i++)
             {
                 var elem = factors.Elem(i);
-                res.Add(new UnitConversion { Unit1Code = elem.Attr("strabrevunidade1").Valor, Unit2Code = elem.Attr("strabrevunidade2").Valor, Factor = Convert.ToDouble(elem.Attr("fltfactor").Valor) });
+                res.Add(new UnitConversion { Unit1Code = elem.Attr("strabrevunidade1").ToString(), Unit2Code = elem.Attr("strabrevunidade2").ToString(), Factor = Convert.ToDouble(elem.Attr("fltfactor").ToString()) });
             }
 
             return Ok(res);
@@ -132,17 +133,18 @@ namespace Eticadata.Cust.WebServices.Controllers
             //Insert or Update 
             foreach (var item in conversionUnits)
             {
-                var idx = factors.ExistElemVariosAttr(new[] { "strabrevunidade1", "strabrevunidade2" }, new[] { item.Unit1Code, item.Unit2Code });
+                var idx = factors.ExistElemVariosAttr(new string[] { "strabrevunidade1", "strabrevunidade2" }, new string[] { item.Unit1Code, item.Unit2Code });
+
                 if (idx >= 0)
                 {
-                    factors.Elem(idx).Attr("fltFactor").Valor = item.Factor.ToString();
+                    factors.Elem(idx).Add<double>("fltFactor", item.Factor);
                 }
                 else
                 {
                     var elem = factors.NewElem();
-                    elem.Add("strabrevunidade1", item.Unit1Code);
-                    elem.Add("strabrevunidade2", item.Unit2Code);
-                    elem.Add("fltfactor", item.Factor.ToString());
+                    elem.Add<string>("strabrevunidade1", item.Unit1Code);
+                    elem.Add<string>("strabrevunidade2", item.Unit2Code);
+                    elem.Add<double>("fltfactor", item.Factor);
                     factors.Add(elem);                    
                 }
             }
@@ -151,7 +153,7 @@ namespace Eticadata.Cust.WebServices.Controllers
             var idxsToRemove = new List<int>();            
             for (var i = 0; i < factors.Count; i++)
             {
-                if (!conversionUnits.Any(x => x.Unit1Code == factors.Elem(i).Attr("strabrevunidade1").Valor && x.Unit2Code == factors.Elem(i).Attr("strabrevunidade2").Valor))
+                if (!conversionUnits.Any(x => x.Unit1Code == factors.Elem(i).Attr("strabrevunidade1").ToString() && x.Unit2Code == factors.Elem(i).Attr("strabrevunidade2").ToString()))
                 {
                     idxsToRemove.Add(i);
                 }
@@ -330,7 +332,7 @@ namespace Eticadata.Cust.WebServices.Controllers
             public double Value { get; set; }
             public DateTime Date { get; set; }
             public double Margin { get; set; }
-            public string VATIncluded { get; set; }
+            public TaxInclusionTypes pTaxIncluded { get; set; }
             public string Currency { get; set; }
             public double Discount1 { get; set; }
             public double Discount2 { get; set; }
@@ -366,22 +368,22 @@ namespace Eticadata.Cust.WebServices.Controllers
             };
 
             item.Prices = new List<ItemPrice>();
-            for (var i = 1; i <= artigo.PrecosVenda.CountPrecosVenda(); i++)
+            for (var i = 1; i <= artigo.PrecosVenda.Lines.Count; i++)
             {
-                var prc = artigo.PrecosVenda.get_Linha(i);
+                var priceLine = artigo.PrecosVenda.GetPriceLine(i);
 
                 item.Prices.Add(new ItemPrice
                 {
-                    Number = prc.Numero,
-                    Value = prc.Preco,
-                    Date = prc.Data,
-                    Margin = prc.Margem,
-                    VATIncluded = prc.Iva,
-                    Currency = prc.Moeda,
-                    Discount1 = prc.Desconto1,
-                    Discount2 = prc.Desconto2,
-                    Discount3 = prc.Desconto3,
-                    ValueDiscount = prc.DescontoValor
+                    Number = priceLine.Numero,
+                    Value = priceLine.Preco,
+                    Date = priceLine.Data,
+                    Margin = priceLine.Margem,
+                    pTaxIncluded = priceLine.IVA,
+                    Currency = priceLine.Moeda,
+                    Discount1 = priceLine.Desconto1,
+                    Discount2 = priceLine.Desconto2,
+                    Discount3 = priceLine.Desconto3,
+                    ValueDiscount = priceLine.DescontoValor
                 });
             }
 
@@ -434,22 +436,22 @@ namespace Eticadata.Cust.WebServices.Controllers
 
             for (var i = 1; i <= item.Prices.Count; i++)
             {
-                var prc = artigo.PrecosVenda.get_Linha(i);
+                var priceLine = artigo.PrecosVenda.GetPriceLine(i);
                 var itemprice = item.Prices[i - 1];
 
-                prc.Numero = itemprice.Number;
-                prc.Preco = itemprice.Value;
-                prc.Data = itemprice.Date;
-                prc.Margem = itemprice.Margin;
-                prc.Iva = itemprice.VATIncluded;
-                prc.Moeda = itemprice.Currency;
-                prc.Desconto1 = itemprice.Discount1;
-                prc.Desconto2 = itemprice.Discount2;
-                prc.Desconto3 = itemprice.Discount3;
-                prc.DescontoValor = itemprice.ValueDiscount;
+                priceLine.Numero = itemprice.Number;
+                priceLine.Preco = itemprice.Value;
+                priceLine.Data = itemprice.Date;
+                priceLine.Margem = itemprice.Margin;
+                priceLine.IVA = itemprice.pTaxIncluded;
+                priceLine.Moeda = itemprice.Currency;
+                priceLine.Desconto1 = itemprice.Discount1;
+                priceLine.Desconto2 = itemprice.Discount2;
+                priceLine.Desconto3 = itemprice.Discount3;
+                priceLine.DescontoValor = itemprice.ValueDiscount;
             }
             //Remove extra lines if they exist
-            for (int i = artigo.PrecosVenda.CountPrecosVenda(); i > item.Prices.Count; i--)
+            for (int i = artigo.PrecosVenda.Lines.Count; i > item.Prices.Count; i--)
             {
                 artigo.PrecosVenda.RemLinPrecos(i);
             }
