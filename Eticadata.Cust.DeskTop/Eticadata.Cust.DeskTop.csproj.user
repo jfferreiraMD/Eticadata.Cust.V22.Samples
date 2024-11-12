@@ -7,6 +7,6 @@
     </StartArguments>
   </PropertyGroup>
   <PropertyGroup>
-    <ReferencePath>..\Eticadata.Web\Bin\;..\..\Desktop\Bin\</ReferencePath>
+    <ReferencePath>C:\eticadata Sites\ERP v22\Eticadata.Web\Bin\;C:\eticadata software\ERP v22\Desktop\Bin\</ReferencePath>
   </PropertyGroup>
 </Project>

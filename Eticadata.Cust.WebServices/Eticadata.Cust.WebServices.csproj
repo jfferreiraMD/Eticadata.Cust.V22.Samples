@@ -123,11 +123,6 @@
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Views.Reports.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eticadata.Views.Reports.XmlSerializers, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Eticadata.Web\bin\Eticadata.Views.Reports.XmlSerializers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Eticadata.Web, Version=22.0.0.0, Culture=neutral, PublicKeyToken=b4fa931908a2cad3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Eticadata.Web\bin\Eticadata.Web.dll</HintPath>
