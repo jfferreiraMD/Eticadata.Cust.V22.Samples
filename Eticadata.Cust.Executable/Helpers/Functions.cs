@@ -44,34 +44,35 @@ namespace Eticadata.Cust.Executable.Helpers
             }
         }
 
-        public static EtiAplicacao GetNewEtiAplicacao(EtiAppAuthentication authentication)
+        public static EtiAplicacao GetNewEtiAplicacao(EtiAppAuthentication auth)
         {
             EtiAplicacao etiApp = new EtiAplicacao();
 
             try
             {
-                if (!etiApp.InitializeEtiApp(EtiConstantes.cAplicBackOffice, authentication.SQLServerName, authentication.SystemDatabase, authentication.SQLUser, authentication.SQLPassword, string.Empty, string.Empty, string.Empty, string.Empty, authentication.serviceAddress, true, string.Empty))
+
+                if (!etiApp.InitializeEtiApp(EtiConstantes.cAplicBackOffice, auth.SQLServerName, auth.SystemDatabase, auth.SQLUser, auth.SQLPassword, "", "", auth.EtiServerURL, true, ""))
                 {
                     throw new Exception("Ocorreu um erro a inicializar etiAplicacao...");
                 }
 
                 LoginResultTypes result;
-                if ((result = etiApp.Login(authentication.Login, authentication.Password)) != LoginResultTypes.Ok)
+                if ((result = etiApp.Login(auth.EtiLogin, auth.EtiPassword)) != LoginResultTypes.Ok)
                 {
                     throw new Exception(result == LoginResultTypes.InvalidUser ? "Invalid user..." : "Wrong user or password...");
                 }
 
-                if (!etiApp.OpenEmpresa(authentication.Company))
+                if (!etiApp.OpenEmpresa(auth.EtiCompany))
                 {
                     throw new Exception("Empresa inválida ...");
                 }
 
-                if (!etiApp.OpenExercicio(authentication.FiscalYearCode))
+                if (!etiApp.OpenExercicio(auth.FiscalYearCode))
                 {
                     throw new Exception("Exercício inválido...");
                 }
 
-                if (!etiApp.OpenSeccao(authentication.SectionCode))
+                if (!etiApp.OpenSeccao(auth.SectionCode))
                 {
                     throw new Exception("Seção inválida...");
                 }
@@ -92,24 +93,24 @@ namespace Eticadata.Cust.Executable.Helpers
             loginUser.server = authentication.SQLServerName;
             loginUser.sistema = authentication.SystemDatabase;
             loginUser.idioma = authentication.Language;
-            loginUser.login = authentication.Login;
-            loginUser.password = authentication.Password;
-            var login = GetRequest(authentication.serviceAddress + "api/Shell/LoginUser", "POST", loginUser);
+            loginUser.login = authentication.EtiLogin;
+            loginUser.password = authentication.EtiPassword;
+            var login = GetRequest(authentication.EtiServerURL + "api/Shell/LoginUser", "POST", loginUser);
 
             if ((bool)((Newtonsoft.Json.Linq.JValue)login.sucesso).Value)
             {
                 dynamic openCompany = new JObject();
                 openCompany.reabertura = true;
                 openCompany.mostrarJanelaIniSessao = false;
-                openCompany.codEmpresa = authentication.Company;
+                openCompany.codEmpresa = authentication.EtiCompany;
                 openCompany.codExercicio = authentication.FiscalYearCode;
                 openCompany.codSeccao = authentication.SectionCode;
 
-                var resultOpenCompany = GetRequest(authentication.serviceAddress + "api/Shell/OpenCompany", "POST", openCompany);
+                var resultOpenCompany = GetRequest(authentication.EtiServerURL + "api/Shell/OpenCompany", "POST", openCompany);
 
                 if ((bool)((Newtonsoft.Json.Linq.JValue)resultOpenCompany.sucesso).Value)
                 {
-                    var resultWS = GetRequest(authentication.serviceAddress + "api/EntitiesCategoryTA/GetEntitiesCategory", "GET", null);
+                    var resultWS = GetRequest(authentication.EtiServerURL + "api/EntitiesCategoryTA/GetEntitiesCategory", "GET", null);
                     var resultBytes = System.Text.Encoding.UTF8.GetBytes(resultWS.ToString());
                     entitiesCategory = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EntitiesCategory>>(System.Text.Encoding.UTF8.GetString(resultBytes));
                 }

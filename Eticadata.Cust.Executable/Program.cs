@@ -18,15 +18,15 @@ namespace Eticadata.Cust.Executable
         {
             EtiAppAuthentication authentication = new EtiAppAuthentication()
             {
-                serviceAddress = IniFile.IniRead(Path.Combine(IniFile.GetBasePath(), "ERPV19.eInic.ini"), "Geral", "ServerUrl", ""),
-                SQLServerName = @"PT-ALFREDOA\ETICADATA",
+                EtiServerURL = $@"http://{Environment.MachineName}/ERPV22/",
+                SQLServerName = $@"{Environment.MachineName}\ETICADATA",
                 SQLUser = "sa",
-                SQLPassword = "Pl@tinum",
-                SystemDatabase = "SIS_CUST19",
-                Login = "demo",
-                Password = "1",
-                Company = "T19PT",
-                FiscalYearCode = "EX 2021",
+                SQLPassword = "*****",
+                SystemDatabase = "sistema",
+                EtiLogin = "demo",
+                EtiPassword = "1",
+                EtiCompany = "T01",
+                FiscalYearCode = $"EX {DateTime.Now.Year}",
                 SectionCode = "1",
                 Language = "pt-PT"
             };
@@ -50,7 +50,7 @@ namespace Eticadata.Cust.Executable
                 string codArtigo = "001";
                 bool blnAfectaOutrasLinhas = false, blnAssociacoesFixas = false, blnAssociacoesLivres = false, blnStockDisponivel = false, blnFamPararQtd = false, blnFamPararPreco = false;
                 TpProcuraArtigo pProcuraArtigo = TpProcuraArtigo.Encontrou;
-                venda.AddLin(ref linha);
+                venda.AddLin(linha);
 
                 venda.Lines[linha].CodArtigo = codArtigo;
                 venda.AlteraArtigo(linha, ref codArtigo, ref blnAfectaOutrasLinhas, ref blnAssociacoesFixas, ref blnAssociacoesLivres, ref pProcuraArtigo, false, ref blnStockDisponivel, ref blnFamPararQtd, ref blnFamPararPreco);
