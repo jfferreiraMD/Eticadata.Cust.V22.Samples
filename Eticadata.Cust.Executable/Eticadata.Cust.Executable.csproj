@@ -119,10 +119,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>:Copy executable, assembly and debug symbols to desktop folder
-xcopy "$(TargetDir)Eticadata.Cust.*.pdb" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y
-xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y
-xcopy "$(TargetDir)Eticadata.Cust.*.exe" "C:\eticadata software\ERP v22\Desktop\Bin" /E /Y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
