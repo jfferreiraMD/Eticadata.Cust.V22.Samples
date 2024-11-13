@@ -61,7 +61,7 @@ Abrir o projeto *Eticadata Customization V22 Samples* no Visual Studio. O projet
 
 > **NOTA:** No caso de estar em falta alguma referencia no projeto *Eticadata Customization V22 Samples*, deverá ser adicionado ao projeto o reference path `[DRIVER]:\eticadata Sites\ERP V22\Eticadata.Web\Bin\`.
 
-Adicionalmente é necessário incluir a assembly na lista de assemblies a ser carregadas pelo site. Será necessário editar o ficheiro `Web.Config ` que se encontra na pasta `C:\eticadata Sites\ERP V19\Eticadata.Web`, e adicionar a seguinte linha, conforme o exemplo abaixo:
+Adicionalmente é necessário incluir a assembly na lista de assemblies a ser carregadas pelo site. Será necessário editar o ficheiro `Web.Config ` que se encontra na pasta `C:\eticadata Sites\ERP V22\Eticadata.Web`, e adicionar a seguinte linha, conforme o exemplo abaixo:
 
 ```xml
 <configuration>
