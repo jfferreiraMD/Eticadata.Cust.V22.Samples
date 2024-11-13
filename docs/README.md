@@ -6,21 +6,15 @@
 
 ----------
 
-
-
 1.  Exemplo de <span style="color:#075fff">**User Controls**</span>
 
 > O projeto **`Eticadata.Cust.Desktop`** disponibiliza exemplos de como adicionar um novo **User Control** ao ERP. 
 
+Abrir o projeto *Eticadata Customization V22 Samples* no Visual Studio. O projeto depois de compilado criará uma dll "*Eticadata.Cust.DeskTop.dll*" na pasta "*.build*" onde se encontra o projeto aberto (`~\Eticadata Customization V22 Samples\Eticadata.Cust.DeskTop\.build\`). De seguida deverá ser copiada para a pasta bin do ERP `C:\eticadata software\ERP v22\Desktop\Bin\`. 
 
+> **NOTA:** No caso de estar em falta alguma refêrencia no projeto *Eticadata Customization V22 Samples*, deverà ser adicionado o reference path da pasta de instalação do ERP Eticadata  `C:\eticadata software\ERP v22\Desktop\Bin\`.
 
-Abrir o projeto *Eticadata Customization V19 Samples* no Visual Studio. O projeto depois de compilado criará uma dll "*Eticadata.Cust.DeskTop.dll*" na pasta "*.build*" onde se encontra o projeto aberto (`~\Eticadata Customization V19 Samples\Eticadata.Cust.DeskTop\.build\`). De seguida deverá ser copiada para a pasta bin do ERP `[DRIVER]:\Program Files (x86)\eticadata software\ERP V19\Desktop\bin\`. 
-
-> **NOTA:** No caso de estar em falta alguma referencia no projeto *Eticadata Customization V19 Samples*, deverão ser adicionadas ao projeto as dlls que se encontram na pasta de instalação do ERP Eticadata  `[DRIVER]:\Program Files (x86)\eticadata software\ERP v19\Desktop\bin\`.
-
-Após feita a cópia da dll  "*Eticadata.Cust.DeskTop.dll* para a pasta é necessário abrir o ERP e acrescentar a mesma ao sistema de assemblies do ERP Eticadata (separador Admin \ Customização \ Assemblies).  
-
-   
+Após feita a cópia da dll  "*Eticadata.Cust.DeskTop.dll* para a pasta é necessário abrir o ERP e acrescentar à mesma ao sistema de assemblies do ERP Eticadata (separador Admin \ Customização \ Assemblies).  
 
 No ficheiro **`init.cs`**, que está dentro da pasta **`Eticadata.Cust.Desktop`**, poderá encontrar no construtor da class a forma como o contexto aplicacional é disponibilizado na class. 
 
@@ -33,10 +27,8 @@ public Init([ServiceDependency()] WorkItem myWorkItem_,
  myEtiApp = myEtiApp_;  
  myUiutils = myUiutils_;  
  myWorkItem = myWorkItem_;  
-}   
+}
 ```
-
-
 
 É também nesta class **`init.cs`** que são referenciadas as janelas customizadas. A função `public void OnShowIntegraDocs` tem um `[CommandHandler("cmdNewWindow")]` que tem a funcionalidade de abrir uma nova janela no ribbon do ERP. 
 
@@ -48,8 +40,6 @@ public void OnShowIntegraDocs(object sender, EventArgs e)
  ShowWindow<NewWindow>(false, true);  
 }   
 ```
-
-
 
 Para disponibilizar esta janela customizada na ribbon do ERP devemos aceder através do separador Admin \ Editar Ribbon e criar um novo item. Efetuar a configuração do novo item com o comando denomidado de *cmdNewWindow* e gravar as alterações implementadas.  
 
@@ -63,39 +53,36 @@ ____
 
 2. Exemplo de <span style="color:#075fff">__Webservices__</span>
 
-   > O projeto **`Eticadata.Cust.Webservices`** disponibiliza exemplos de como adicionar um webservice customizado ao ERP.
+> O projeto **`Eticadata.Cust.Webservices`** disponibiliza exemplos de como adicionar um webservice customizado ao ERP.
 
 
 
-   Abrir o projeto *Eticadata Customization V19 Samples* no Visual Studio. O projeto depois de compilado criará dlls denominadas "*Eticadata.Cust.WebServices.dll*" na pasta "*.build*" onde se encontra o projeto aberto (`~\Eticadata Customization V19 Samples\Eticadata.Cust.WebServices\.build\`). De seguida deverão ser copiadas para a pasta bin do site do ERP  `[DRIVER]:\eticadata Sites\ERP v17\Eticadata.Web\Bin\`. 
+Abrir o projeto *Eticadata Customization V22 Samples* no Visual Studio. O projeto depois de compilado criará .dlls denominadas "*Eticadata.Cust.WebServices.dll*" na pasta `[DRIVER]:\eticadata Sites\ERP v22\Eticadata.Web\Bin\`.
 
-   > **NOTA:** No caso de estar em falta alguma referencia no projeto *Eticadata Customization V19 Samples*, deverão ser adicionadas ao projeto as dlls que se encontram na pasta de instalação do Site ERP Eticadata  `[DRIVER]:\eticadata Sites\ERP V19\Eticadata.Web\Bin\`.
+> **NOTA:** No caso de estar em falta alguma referencia no projeto *Eticadata Customization V22 Samples*, deverá ser adicionado ao projeto o reference path `[DRIVER]:\eticadata Sites\ERP V22\Eticadata.Web\Bin\`.
 
-   Adicionalmente é necessário incluir a assembly na lista de assemblies a ser carregadas pelo site. Será necessário editar o ficheiro `Web.Config ` que se encontra na pasta `C:\eticadata Sites\ERP V19\Eticadata.Web`, e adicionar a seguinte linha, conforme o exemplo abaixo:
+Adicionalmente é necessário incluir a assembly na lista de assemblies a ser carregadas pelo site. Será necessário editar o ficheiro `Web.Config ` que se encontra na pasta `C:\eticadata Sites\ERP V19\Eticadata.Web`, e adicionar a seguinte linha, conforme o exemplo abaixo:
 
-   ```xml
-   <configuration>
-       <system.web>
-           <compilation>
-               <assemblies>
-               	<!-- Adicionar a linha abaixo indicada -->
-                   <add assembly="Eticadata.Cust.WebServices" />
-   ```
+```xml
+<configuration>
+<system.web>
+<compilation>
+<assemblies>
+<!-- Adicionar a linha abaixo indicada -->
+<add assembly="Eticadata.Cust.WebServices" />
+```
 
-
-
+   
    Para ser possível garantirmos que o Webservice apenas esteja disponível após a existência de uma sessão válida no ERP Eticadata, alguns `controllers` podem estar protegidos através da anotação `[Authorize]`.  (Saiba mais em https://docs.microsoft.com/en-us/aspnet/core/security/authorization/roles).
 
    Sempre que utilizar a anotação `[Authorize]`, os pedidos ao webservice terão que obrigatóriamente passar pela inicialização de uma sessão, através de pedidos a webservices que existem de base no ERP.
-
-
 
    __Autenticação de utilizador__
 
    O primeiro pedido a ser feito ao webservice é a autenticação de utilizador. É possível efetuar a autenticação através do seguinte url:
 
    ```xml
-   POST    http://localhost/ERPV19/api/Shell/LoginUser/
+   POST    http://localhost/ERPV22/api/Shell/LoginUser/
            
            Content-Type: application/json; charset=UTF-8
    ```
@@ -106,23 +93,19 @@ ____
        "login": "demo",
        "password": "DEMO",
        "idioma": "pt-pt",
-       "server": "LOCALHOST\\SQLEXPRESS",
+       "server": "LOCALHOST\\ETICADATA",
        "sistema": "SISTEMA"
    }
    ~~~
 
-
-
-   O webservice responde com um JSON onde, entre outras informações, existe um valor boleano que indica se os dados são válidos e se a autenticação foi bem sucedida.
-
-
+   O webservice responde com um JSON onde, entre outras informações, existe um valor boleano que indica se os dados são válidos e se a autenticação foi bem sucedida `sucesso` / `sucessoCond`.
 
    __Autenticação de base de dados__
 
-   Caso a resposta do webservice anterior seja válida, passamos então para o segundo pedido. Será necessário indicar qual a base de dados sobre a qual serão executadas as operações.  Proceder da mesma forma que é feita no passo anterior, utilizando o url abaixo:
+   Caso a resposta do webservice anterior seja válida, passamos então para o segundo pedido. Será necessário indicar  a base de dados (empresa, secção e exercício) sobre a qual serão executadas as operações.  Proceder da mesma forma que é feita no passo anterior, utilizando o url abaixo:
 
    ```
-   POST    http://localhost/ERPV19/api/Shell/OpenCompany/
+   POST    http://localhost/ERPV22/api/Shell/OpenCompany/
    
            Content-Type: application/json; charset=UTF-8
    ```
@@ -133,25 +116,24 @@ ____
        "reabertura":true,
        "mostrarJanelaIniSessao":false,
        "codEmpresa":"DEMO",
-       "codExercicio":"2018",
+       "codExercicio":"2024",
        "codSeccao":"1"
    }
    ~~~
 
 
+   Após efetuada a publicação do webservice no site do ERP, é possivel invocar os webservices customizados acedendo ao url com o formato `http://<ServerName>/erpv22/api/<ControllerName>/[actionName]/`.
 
-   Após efetuada a publicação do webservice no site do ERP, é possivel invocar os webservices customizados acedendo ao url com o formato `http://<ServerName>/erpv19/api/<ControllerName>/[actionName]/`.
-
-   Neste caso em concreto, o url do exemplo disponibilizado é `http://localhost/erpv19/api/CustUtilities/PrintReport/`.
+   Neste caso em concreto, o url do exemplo disponibilizado é `http://localhost/erpv22/api/CustUtilities/PrintReport/`.
 
 
 
    É importante referir que a autenticação é baseada em cookies. Assim sendo, é necessário ter em conta que todos os pedidos aos webservices deve conter no Header os cookies de sessão. É também importante levar em consideração que em cada resposta dos webservices podem ser retornados novos cookies.
 
-   Após a invocações dos webservices necessários, customizados ou não, é imprescinvidel terminar a sessão. Esta operação é feita através da invocação de um webservice de Logout:
+   Após a invocações dos webservices necessários, customizados ou não, é imprescindível terminar a sessão. Esta operação é feita através da invocação de um webservice de Logout:
 
    ```
-   POST    http://localhost/ERPV19/api/Shell/LogoutUser/
+   POST    http://localhost/ERPV22/api/Shell/LogoutUser/
    
            Content-Type: application/json; charset=UTF-8
    ```
@@ -163,4 +145,6 @@ ____
 
 
 ____
+
+
 
